@@ -85,7 +85,7 @@ export default function Browse() {
     return sortProducts(filtered, sort)
   }, [category, sub, query, authorId, price, sort])
 
-  const activeFilters = [
+  const filterCandidates: Array<false | { label: string; clear: Record<string, null> }> = [
     category !== 'all' && {
       label: categories.find((c) => c.id === category)?.label ?? category,
       clear: { category: null, sub: null },
@@ -97,7 +97,8 @@ export default function Browse() {
       clear: { price: null },
     },
     query !== '' && { label: `“${query}”`, clear: { q: null } },
-  ].filter(Boolean) as Array<{ label: string; clear: Record<string, null> }>
+  ]
+  const activeFilters = filterCandidates.filter((filter) => filter !== false)
 
   return (
     <div className="page-shell py-10 md:py-14">

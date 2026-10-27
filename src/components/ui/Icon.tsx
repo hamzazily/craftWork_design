@@ -6,7 +6,7 @@ import type { SVGProps } from 'react'
  */
 export type IconProps = SVGProps<SVGSVGElement> & { size?: number }
 
-function Base({ size = 18, strokeWidth = 1.6, children, ...rest }: IconProps & { strokeWidth?: number }) {
+function Base({ size = 18, strokeWidth = 1.6, children, ...rest }: IconProps) {
   return (
     <svg
       width={size}
